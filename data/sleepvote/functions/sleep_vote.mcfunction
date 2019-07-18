@@ -12,14 +12,17 @@ execute as @a[nbt={SleepTimer:0s},scores={sleepbc=1}] run scoreboard players set
 execute if score #morning sleepbc matches 2 if score #sleepingpercent dummy >= #sleepovernight dummy run scoreboard players set #morning sleepbc 0
 execute if score #morning sleepbc matches 0 run tellraw @a [{"text":"Wakey, wakey, rise and shine... Good Morning everyone!","color":"gold"}]
 execute if score #morning sleepbc matches 0 store result score #day dummy run time query day
+execute if score #morning sleepbc matches 0 run scoreboard players set #delaytimer dummy 20
 execute if score #morning sleepbc matches 0 run scoreboard players set @a sleepbc 2
 execute if score #morning sleepbc matches 0 run scoreboard players set #morning sleepbc 1
 execute if score #sleepingpercent dummy >= #sleepovernight dummy run scoreboard players set #setday dummy 1
 execute if score #setday dummy matches 0 run scoreboard players set #setday dummy 1
-execute if score #setday dummy matches 1 run time set 11d
+execute if score #setday dummy matches 1 run time set 1d
 execute if score #setday dummy matches 1 run scoreboard players set #setday dummy 2
-execute if score #setday dummy matches 2 if score #day dummy matches 1.. run time add 1d
-execute if score #setday dummy matches 2 if score #day dummy matches 1.. run scoreboard players remove #day dummy 1
-execute if score #setday dummy matches 2 if score #day dummy matches 0 run scoreboard players set #setday dummy -1
+execute if score #setday dummy matches 2 if score #delaytimer dummy matches 1.. run scoreboard players remove #delaytimer dummy 1
+execute if score #setday dummy matches 2 if score #delaytimer dummy matches 0 run scoreboard players set #setday dummy 3
+execute if score #setday dummy matches 3 if score #day dummy matches 1.. run time add 1d
+execute if score #setday dummy matches 3 if score #day dummy matches 1.. run scoreboard players remove #day dummy 1
+execute if score #setday dummy matches 3 if score #day dummy matches 0 run scoreboard players set #setday dummy -1
 execute if score #sleepingpercent dummy matches 0 run scoreboard players set #morning sleepbc 2
 execute if score #sleepingpercent dummy matches 0 run scoreboard players set @a sleepbc 0
