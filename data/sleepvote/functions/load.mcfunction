@@ -8,4 +8,4 @@ bossbar set minecraft:sleep color yellow
 summon minecraft:armor_stand ~ ~ ~ {CustomName:"[{\"text\":\"Sleep Vote\",\"color\":\"gold\"}]",Tags:["sleep_temp"]}
 execute as @e[tag=sleep_temp] run say Sleep Vote Initialized!
 kill @e[type=minecraft:armor_stand,tag=sleep_temp]
-tellraw @a [{"text":"[","color":"white"},{"text":"Sleep Vote","color":"gold"},{"text":"] ","color":"white"},{"text":"Change the percentage to skip night","underlined":true,"color":"yellow","clickEvent":{"action":"suggest_command","value":"/scoreboard players set #sleepovernight sleep_vote <persentage>"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"點一下即可立即設置","color":"gold"}]}}}]
+tellraw @a [{"text":"[","color":"white"},{"text":"Sleep Vote","color":"gold"},{"text":"] ","color":"white"},{"text":"Change the percentage to skip night","underlined":true,"color":"yellow","clickEvent":{"action":"suggest_command","value":"/scoreboard players set #sleepovernight sleep_vote "},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"/scoreboard players set #sleepovernight sleep_vote ","color":"white"},{"text":"<persentage>","color":"red"}]}}}]
