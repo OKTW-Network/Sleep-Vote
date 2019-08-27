@@ -3,8 +3,8 @@ scoreboard objectives add sleepbc dummy
 scoreboard objectives add sleep_vote dummy
 scoreboard players set #100 sleep_vote 100
 scoreboard players set #sleepovernight sleep_vote 50
-bossbar add sleep "睡覺囉"
-bossbar set minecraft:sleep color yellow
+bossbar add sleepvote:sleep "睡覺囉"
+bossbar set sleepvote:sleep color yellow
 summon minecraft:armor_stand ~ ~ ~ {CustomName:"[{\"text\":\"Sleep Vote\",\"color\":\"gold\"}]",Tags:["sleep_temp"]}
 execute as @e[tag=sleep_temp] run say Sleep Vote Initialized!
 kill @e[type=minecraft:armor_stand,tag=sleep_temp]
