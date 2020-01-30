@@ -19,7 +19,7 @@ Inspired by morpheus.
 
 1. SleepVote
 
-## Tags
+### Tags
 
 1. InitializedSleepvoteBossBar
 2. vote_sleep
