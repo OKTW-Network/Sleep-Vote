@@ -1,4 +1,5 @@
 scoreboard objectives remove isSleeping
 scoreboard objectives remove sleepbc
 scoreboard objectives remove sleep_vote
-bossbar remove sleepvote:sleep
+scoreboard objectives remove bcSleep
+scoreboard objectives remove bcSleepVote
