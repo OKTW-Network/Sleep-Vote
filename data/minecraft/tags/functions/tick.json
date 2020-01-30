@@ -1,7 +1,5 @@
 {
 	"values":[
-		"sleepvote:player_count",
-		"sleepvote:sleep_vote",
-		"sleepvote:bossbar_sleep"
+		"sleepvote:main"
 	]
 }

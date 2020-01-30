@@ -1,22 +1,26 @@
 
 # Sleepvote
 
-Skip night when certain players go to bed. (Default to 50%)
+Helps players sleep in multiplayer games.
+Inspired by morpheus.
 
-## Used scoreboard objective
+## Setting voting percentage
 
-1. isSleeping
-2. sleepbc
-3. sleep_vote
+`/scoreboard players set #vote_percentage SleepVote <value>`
 
-## Used bossbar
+## Required dependency
 
-1. sleep
+* [Math integration](https://github.com/bill96012/Math-integration)
+* [Creative utilities](https://github.com/bill96012/Creative-utilities)
 
-## Change skip night percentage
+## Compatibility information
 
-Set `#sleepovernight`'s score [sleep_vote] to the percentage you want to switch on bossbar clock.
+### Scoreboard objective
 
-```text
-scoreboard players set #sleepovernight sleep_vote 50
-```
+1. SleepVote
+
+### Tags
+
+1. InitializedSleepvoteBossBar
+2. vote_sleep
+3. broadcast_sleep_vote
