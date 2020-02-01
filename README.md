@@ -1,7 +1,7 @@
 
-# Sleepvote
+# Sleep vote
 
-Helps players sleep in multiplayer games.
+Helps players sleep in multiplayer games.  
 Inspired by morpheus.
 
 ## Setting voting percentage
@@ -10,17 +10,18 @@ Inspired by morpheus.
 
 ## Required dependency
 
-* [Math integration](https://github.com/bill96012/Math-integration)
-* [Creative utilities](https://github.com/bill96012/Creative-utilities)
+* [Math integration](https://github.com/OKTW-Network/Math-integration)
+* [Creative utilities](https://github.com/OKTW-Network/Creative-utilities)
 
 ## Compatibility information
 
 ### Scoreboard objective
 
-1. SleepVote
+* versionSleepVote
+* SleepVote
 
 ### Tags
 
-1. InitializedSleepvoteBossBar
-2. vote_sleep
-3. broadcast_sleep_vote
+* InitializedSleepvoteBossBar
+* vote_sleep
+* broadcast_sleep_vote
