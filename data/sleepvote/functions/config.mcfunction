@@ -7,13 +7,17 @@
 # integer, default: 2
 scoreboard players set #sleepvote_print_version Config 2
 
-# Allow module init prompt print out
+# Allow initial prompt print out
 # boolean, default: 0
 scoreboard players set #sleepvote_print_init Config 0
 
 # Allow config prompt print out
 # boolean, default: 0
 scoreboard players set #sleepvote_print_config Config 0
+
+# Allow percentage setting prompt print out
+# boolean, default: 1
+scoreboard players set #sleepvote_print_set_percent Config 1
 
 
 

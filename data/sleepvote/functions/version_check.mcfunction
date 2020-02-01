@@ -1,15 +1,35 @@
-scoreboard players set #sleepvote_version Meta 2000
+scoreboard players set #sleepvote_version_x.*.*-* Meta 2
+scoreboard players set #sleepvote_version_*.x.*-* Meta 0
+scoreboard players set #sleepvote_version_*.*.x-* Meta 1
+scoreboard players set #sleepvote_version_*.*.*-x Meta 0
 
-execute unless score #sleepvote_currently_version Meta matches -2147483648..2147483647 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"score":{"name":"#sleepvote_version","objective":"Meta"}}]
 
-execute unless score #sleepvote_version Meta = #sleepvote_currently_version Meta if score #sleepvote_version Meta > #sleepvote_currently_version Meta if score #sleepvote_print_version Config matches 1..2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"score":{"name":"#sleepvote_currently_version","objective":"Meta"}},{"text":" -> ","color":"green"},{"score":{"name":"#sleepvote_version","objective":"Meta"}}]
-execute unless score #sleepvote_version Meta = #sleepvote_currently_version Meta if score #sleepvote_version Meta < #sleepvote_currently_version Meta if score #sleepvote_print_version Config matches 1..2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"score":{"name":"#sleepvote_currently_version","objective":"Meta"}},{"text":" -> ","color":"red"},{"score":{"name":"#sleepvote_version","objective":"Meta"}}]
-execute if score #sleepvote_version Meta = #sleepvote_currently_version Meta if score #sleepvote_print_version Config matches 2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"score":{"name":"#sleepvote_version","objective":"Meta"}}]
+scoreboard players operation #new_x.*.*-* Version = #sleepvote_version_x.*.*-* Meta
+scoreboard players operation #new_*.x.*-* Version = #sleepvote_version_*.x.*-* Meta
+scoreboard players operation #new_*.*.x-* Version = #sleepvote_version_*.*.x-* Meta
+scoreboard players operation #new_*.*.*-x Version = #sleepvote_version_*.*.*-x Meta
+scoreboard players operation #currently_x.*.*-* Version = #sleepvote_currently_version_x.*.*-* Meta
+scoreboard players operation #currently_*.x.*-* Version = #sleepvote_currently_version_*.x.*-* Meta
+scoreboard players operation #currently_*.*.x-* Version = #sleepvote_currently_version_*.*.x-* Meta
+scoreboard players operation #currently_*.*.*-x Version = #sleepvote_currently_version_*.*.*-x Meta
+function cu:version/check
 
-execute unless score #sleepvote_version Meta = #sleepvote_currently_version Meta run function sleepvote:debug/clean_up-scoreboard
+function cu:version/build-new
+function cu:version/build-currently
 
-scoreboard players operation #sleepvote_currently_version Meta = #sleepvote_version Meta
+execute if score #none Version matches 1 if score #sleepvote_print_version Config matches 1..2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"nbt":"version.new","storage":"cu:resources","interpret":true}]
+execute if score #change Version matches 1 if score #higher Version matches 1 if score #sleepvote_print_version Config matches 1..2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"nbt":"version.currently","storage":"cu:resources","interpret":true},{"text":" -> ","color":"green"},{"nbt":"version.new","storage":"cu:resources","interpret":true}]
+execute if score #change Version matches 1 if score #lower Version matches 1 if score #sleepvote_print_version Config matches 1..2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"nbt":"version.currently","storage":"cu:resources","interpret":true},{"text":" -> ","color":"red"},{"nbt":"version.new","storage":"cu:resources","interpret":true}]
+execute if score #change Version matches 0 if score #none Version matches 0 if score #sleepvote_print_version Config matches 2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"nbt":"version.new","storage":"cu:resources","interpret":true}]
 
-scoreboard players remove @s versionSleepvote 0
-execute as @a unless score @s versionSleepvote = #sleepvote_currently_version Meta run function sleepvote:debug/remove_init_tag
-execute as @a unless score @s versionSleepvote = #sleepvote_currently_version Meta run scoreboard players operation @s versionSleepvote = #sleepvote_currently_version Meta
+# execute if score #change Version matches 1 run function sleepvote:debug/clean_up-scoreboard
+
+scoreboard players operation #sleepvote_currently_version_x.*.*-* Meta = #sleepvote_version_x.*.*-* Meta
+scoreboard players operation #sleepvote_currently_version_*.x.*-* Meta = #sleepvote_version_*.x.*-* Meta
+scoreboard players operation #sleepvote_currently_version_*.*.x-* Meta = #sleepvote_version_*.*.x-* Meta
+scoreboard players operation #sleepvote_currently_version_*.*.*-x Meta = #sleepvote_version_*.*.*-x Meta
+
+scoreboard players remove @s versionSleepVote 0
+# execute as @a unless score @s versionSleepVote = #sleepvote_currently_version Meta run function sleepvote:debug/clean_up-tag
+execute as @a unless score @s versionSleepVote = #sleepvote_currently_version Meta run function sleepvote:debug/remove_init_tag
+execute as @a unless score @s versionSleepVote = #sleepvote_currently_version Meta run scoreboard players operation @s versionSleepVote = #sleepvote_currently_version Meta
