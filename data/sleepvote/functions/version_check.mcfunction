@@ -22,14 +22,12 @@ execute if score #change Version matches 1 if score #higher Version matches 1 if
 execute if score #change Version matches 1 if score #lower Version matches 1 if score #sleepvote_print_version Config matches 1..2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"nbt":"version.currently","storage":"cu:resources","interpret":true},{"text":" -> ","color":"red"},{"nbt":"version.new","storage":"cu:resources","interpret":true}]
 execute if score #change Version matches 0 if score #none Version matches 0 if score #sleepvote_print_version Config matches 2 run tellraw @a ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"Version: "},{"nbt":"version.new","storage":"cu:resources","interpret":true}]
 
-# execute if score #change Version matches 1 run function sleepvote:debug/clean_up-scoreboard
+execute if score #change Version matches 1 run function sleepvote:debug/clean_up-scoreboard
+
+# execute if score #change Version matches 1 as @a run function sleepvote:debug/clean_up-tag
+execute if score #change Version matches 1 as @a run function sleepvote:debug/remove_init_tag
 
 scoreboard players operation #sleepvote_currently_version_x.*.*-* Meta = #sleepvote_version_x.*.*-* Meta
 scoreboard players operation #sleepvote_currently_version_*.x.*-* Meta = #sleepvote_version_*.x.*-* Meta
 scoreboard players operation #sleepvote_currently_version_*.*.x-* Meta = #sleepvote_version_*.*.x-* Meta
 scoreboard players operation #sleepvote_currently_version_*.*.*-x Meta = #sleepvote_version_*.*.*-x Meta
-
-scoreboard players remove @s versionSleepVote 0
-# execute as @a unless score @s versionSleepVote = #sleepvote_currently_version Meta run function sleepvote:debug/clean_up-tag
-execute as @a unless score @s versionSleepVote = #sleepvote_currently_version Meta run function sleepvote:debug/remove_init_tag
-execute as @a unless score @s versionSleepVote = #sleepvote_currently_version Meta run scoreboard players operation @s versionSleepVote = #sleepvote_currently_version Meta

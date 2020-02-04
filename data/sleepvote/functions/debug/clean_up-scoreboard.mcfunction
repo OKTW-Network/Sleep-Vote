@@ -1,3 +1,4 @@
+scoreboard objectives remove versionSleepVote
 scoreboard objectives remove isSleeping
 scoreboard objectives remove sleepbc
 scoreboard objectives remove sleep_vote
