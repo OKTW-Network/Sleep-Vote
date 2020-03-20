@@ -1,0 +1,2 @@
+execute as @a run function cu:detector/operator
+tellraw @a[tag=isOP] ["",{"text":"[Sleep Vote]: ","color":"yellow","bold":true},{"text":"> Set voting percentage <","underlined":true,"color":"gold","clickEvent":{"action":"suggest_command","value":"/scoreboard players set #vote_percentage SleepVote "},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"/scoreboard players set #vote_percentage SleepVote ","color":"white"},{"text":"<persentage>","color":"green"}]}}}]
