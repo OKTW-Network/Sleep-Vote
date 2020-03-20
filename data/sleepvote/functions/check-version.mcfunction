@@ -1,8 +1,4 @@
-scoreboard players set #sleepvote_version_x.*.*-* Meta 2
-scoreboard players set #sleepvote_version_*.x.*-* Meta 0
-scoreboard players set #sleepvote_version_*.*.x-* Meta 1
-scoreboard players set #sleepvote_version_*.*.*-x Meta 0
-
+function sleepvote:version
 
 scoreboard players operation #new_x.*.*-* Version = #sleepvote_version_x.*.*-* Meta
 scoreboard players operation #new_*.x.*-* Version = #sleepvote_version_*.x.*-* Meta
@@ -25,7 +21,7 @@ execute if score #change Version matches 0 if score #none Version matches 0 if s
 execute if score #change Version matches 1 run function sleepvote:debug/clean_up-scoreboard
 
 # execute if score #change Version matches 1 as @a run function sleepvote:debug/clean_up-tag
-execute if score #change Version matches 1 as @a run function sleepvote:debug/remove_init_tag
+execute if score #change Version matches 1 as @a run function sleepvote:debug/remove-init_tag
 
 scoreboard players operation #sleepvote_currently_version_x.*.*-* Meta = #sleepvote_version_x.*.*-* Meta
 scoreboard players operation #sleepvote_currently_version_*.x.*-* Meta = #sleepvote_version_*.x.*-* Meta
